@@ -1,0 +1,36 @@
+﻿@model Agl.DevTest.PetOwner.Models.SortedOwnerViewModel
+
+
+
+@if (Model != null)
+{
+    if (Model.StatusCode == 200 && Model.GenderWiseNames != null)
+    {
+        foreach (var gender in Model.GenderWiseNames.Keys)
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayFor(gi => gender)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var name in Model.GenderWiseNames[gender])
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(ni => name)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        }
+    }
+    else
+    {
+        <p>@Html.DisplayFor(modelItem => modelItem.StatusMessage)</p>
+    }
+}

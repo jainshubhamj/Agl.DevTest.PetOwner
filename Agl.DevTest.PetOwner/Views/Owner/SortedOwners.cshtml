@@ -1,0 +1,61 @@
+﻿@model Agl.DevTest.PetOwner.Models.SortedOwnerViewModel
+
+
+<div class="jumbotron">
+
+    <h1>Owners List Sorted by Name</h1>
+    <hr />
+    <div>
+        @using (Ajax.BeginForm("SortedOwners", new AjaxOptions { UpdateTargetId = "owners-list-by-gender", LoadingElementId = "loader" }))
+        {
+            @Html.TextBox("pet", null, new { placeholder = "Filter by Pet Type" })
+            <input type="submit" value="Search" />
+
+        }
+        <div id="loader" class="antlr" style="display:none">
+            Loading...
+        </div>
+    </div>
+
+    <div id="owners-list-by-gender">
+        @if (Model != null)
+        {
+            if (Model.StatusCode == StatusCodeValues.SUCCESS && Model.GenderWiseNames != null)
+            {
+                if (Model.GenderWiseNames.Keys.Count > 0)
+                {
+                    foreach (var gender in Model.GenderWiseNames.Keys)
+                    {
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayFor(gi => gender)
+                                </th>
+                            </tr>
+
+                            @foreach (var name in Model.GenderWiseNames[gender])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(ni => name)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+                    }
+                }
+                else
+                {
+                    <p>No data found.</p>
+                }
+            }
+            else
+            {
+                <p>@Html.DisplayFor(modelItem => modelItem.StatusMessage)</p>
+            }
+        }
+    </div>
+
+</div>

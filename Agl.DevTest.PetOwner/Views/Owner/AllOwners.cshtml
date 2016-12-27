@@ -1,0 +1,17 @@
+﻿@model Agl.DevTest.PetOwner.Models.AllOwnersViewModel
+
+@{
+    ViewBag.Title = "Owners";
+}
+
+<div class="jumbotron">
+    <h1>Pet Owners</h1>
+    @Html.Partial("_OwnerDetailsPartial", Model)
+
+    <p class="lead">
+    </p>
+    <p>
+        @Html.ActionLink("Owners by Pet Type", "SortedOwners", null, new { @class="btn btn-primary btn-large"})        
+    </p>
+</div>
+
