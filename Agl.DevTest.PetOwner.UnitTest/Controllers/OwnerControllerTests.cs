@@ -21,7 +21,7 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Model, typeof(AllOwnersViewModel));
-            Assert.AreEqual(result.ViewName, "AllOwners");
+            Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action
 
         }
 
@@ -38,7 +38,7 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Model, typeof(SortedOwnerViewModel));
-            Assert.AreEqual(result.ViewName, "SortedOwners");
+            Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action
         }
 
 
