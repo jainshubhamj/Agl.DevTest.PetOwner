@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Agl.DevTest.PetOwner.Controllers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Agl.DevTest.PetOwner.UnitTest.Models;
 using System.Web.Mvc;
+using Agl.DevTest.PetOwner.Models;
 
 namespace Agl.DevTest.PetOwner.Controllers.UnitTest
 {
@@ -18,10 +20,11 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.ViewName, "AllOwners");            
-           
+            Assert.IsInstanceOfType(result.Model, typeof(AllOwnersViewModel));
+            Assert.AreEqual(result.ViewName, "AllOwners");
+
         }
-        
+
         [TestMethod()]
         public void SortedOwnersTest()
         {
@@ -34,7 +37,10 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
 
             // Assert
             Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result.Model, typeof(SortedOwnerViewModel));
             Assert.AreEqual(result.ViewName, "SortedOwners");
         }
+
+
     }
 }
