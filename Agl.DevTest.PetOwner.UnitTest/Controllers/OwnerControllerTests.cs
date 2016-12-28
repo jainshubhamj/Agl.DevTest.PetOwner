@@ -10,7 +10,7 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
     public class OwnerControllerTests
     {
         [TestMethod()]
-        public void AllOwnersTest()
+        public void AllOwnersTest_Valid()
         {
             // Arrange
             OwnerController controller = new OwnerController(new MockServiceCaller(), new Helpers.DataProcessor());
@@ -19,14 +19,16 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
             ViewResult result = controller.AllOwners().Result as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(result);            
+            Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action            
             Assert.IsInstanceOfType(result.Model, typeof(AllOwnersViewModel));
-            Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action
-
+            AllOwnersViewModel resultViewModel = result.Model as AllOwnersViewModel;
+            Assert.IsNotNull(resultViewModel.OwnerDetails);
+            Assert.IsTrue(resultViewModel.OwnerDetails.Count > 0);            
         }
 
         [TestMethod()]
-        public void SortedOwnersTest()
+        public void SortedOwnersTest_Valid()
         {
             // Arrange
             string petType = "cat";
@@ -37,8 +39,31 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result.Model, typeof(SortedOwnerViewModel));
             Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action
+            Assert.IsInstanceOfType(result.Model, typeof(SortedOwnerViewModel));
+            SortedOwnerViewModel resultViewModel = result.Model as SortedOwnerViewModel;
+            Assert.IsNotNull(resultViewModel.GenderWiseNames);
+            Assert.IsTrue(resultViewModel.GenderWiseNames.Count > 0);
+            Assert.IsTrue(resultViewModel.GenderWiseNames.Keys.Count == 2);
+
+        }
+
+        [TestMethod()]
+        public void SortedOwnersTest_NullInput()
+        {
+            // Arrange
+            string petType = null;
+            OwnerController controller = new OwnerController(new MockServiceCaller(), new Helpers.DataProcessor());
+
+            // Act
+            ViewResult result = controller.SortedOwners(petType).Result as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action
+            Assert.IsInstanceOfType(result.Model, typeof(SortedOwnerViewModel));
+            SortedOwnerViewModel resultViewModel = result.Model as SortedOwnerViewModel;
+            Assert.IsNull(resultViewModel.GenderWiseNames);            
         }
 
 
