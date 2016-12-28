@@ -47,8 +47,8 @@ namespace Agl.DevTest.PetOwner.Helpers.UnitTest
         [TestMethod()]
         public void GetServiceResponseAsyncTest_IncorrectInput()
         {
-            string baseUrl = "http://abc.com";
-            string svcUri = "/abc.json";
+            string baseUrl = "http://incorrect.incorrect";
+            string svcUri = "/incorrect.json";
             Models.ServiceResponse svcResponse = _svcCaller.GetServiceResponseAsync(baseUrl, svcUri).Result;
 
             Assert.IsNotNull(svcResponse);
