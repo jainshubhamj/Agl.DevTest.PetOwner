@@ -6,15 +6,22 @@
     <h1>Owners List Sorted by Name</h1>
     <hr />
     <div>
-        @using (Ajax.BeginForm("SortedOwners", new AjaxOptions { UpdateTargetId = "owners-list-by-gender", LoadingElementId = "loader" }))
+        @using (Ajax.BeginForm("SortedOwners", null, new AjaxOptions { UpdateTargetId = "owners-list-by-gender", LoadingElementId = "loader" }, new { style = "display:inline" }))
         {
             @Html.TextBox("pet", null, new { placeholder = "Filter by Pet Type" })
-            <input type="submit" value="Search" />
+            <input class="btn btn-primary btn-large" type="submit" value="Search" />
 
         }
-        <div id="loader" class="antlr" style="display:none">
+
+        <span style="float:right">
+            Quick search by @Html.ActionLink("Cat", "SortedOwners", "Owner", new { pet = "Cat" }, null),
+            @Html.ActionLink("Dog", "SortedOwners", "Owner", new { pet = "Dog" }, null), @Html.ActionLink("Fish", "SortedOwners", "Owner", new { pet = "Fish" }, null)
+        </span>
+
+        <span id="loader" class="antlr" style="display:none">
             Loading...
-        </div>
+        </span>
+
     </div>
 
     <div id="owners-list-by-gender">
