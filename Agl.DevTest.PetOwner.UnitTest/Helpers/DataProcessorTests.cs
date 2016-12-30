@@ -78,13 +78,42 @@ namespace Agl.DevTest.PetOwner.UnitTest.Helpers
         [TestMethod]
         public void SortByPetTypeTest_OneOwnerIsNull()
         {
+            //Arrange
+            string petTypeFilter = "Cat";
+            List<OwnerDetail> lstOwnerDet = new List<OwnerDetail>();
+            OwnerDetail owner = null;
+            lstOwnerDet.Add(owner);
 
+            //Act
+            Dictionary<string, List<string>> dictOwners = _dProcessor.SortByPetType(lstOwnerDet, petTypeFilter);
+
+            //Assert
+            Assert.IsNotNull(dictOwners);
+            Assert.AreEqual(dictOwners.Count, 0);
         }
 
         [TestMethod]
         public void SortByPetTypeTest_OwnersPetListIsNull()
         {
+            //Arrange
+            string petTypeFilter = "Cat";
+            List<OwnerDetail> lstOwnerDet = new List<OwnerDetail>();
+            OwnerDetail owner = new OwnerDetail();
+            owner.Name = "Shubh";
+            owner.Age = 27;
+            owner.Gender = "Male";
+            owner.Pets = new List<Pet>();
 
+            Pet pet1 = null;
+
+            owner.Pets.Add(pet1);
+
+            //Act
+            Dictionary<string, List<string>> dictOwners = _dProcessor.SortByPetType(lstOwnerDet, petTypeFilter);
+
+            //Assert
+            Assert.IsNotNull(dictOwners);
+            Assert.AreEqual(dictOwners.Count, 0);
         }
     }
 }
