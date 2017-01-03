@@ -52,7 +52,7 @@ namespace Agl.DevTest.PetOwner.Helpers
                 }
                 catch (Exception ex)
                 {
-                    //TODO: Log Exception
+                    // Log Exception
                     throw;
                 }
             }
@@ -107,7 +107,7 @@ namespace Agl.DevTest.PetOwner.Helpers
                 }
                 catch (Exception ex)
                 {
-                    //TODO: Log Exception
+                    // Log Exception
                     throw;
                 }
             }

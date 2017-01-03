@@ -14,7 +14,7 @@ namespace Agl.DevTest.PetOwner.Helpers
         /// <returns>Response object containing Status and JSON string</returns>
         public async Task<Models.ServiceResponse> GetServiceResponseAsync(string baseDomainUrl, string serviceUri)
         {
-            //TODO: Log Entry with URL
+            // Log Entry with URL
             Models.ServiceResponse svcResponse = new Models.ServiceResponse();
             svcResponse.StatusCode = StatusCodeValues.SUCCESS;
             svcResponse.StatusMessage = Constants.SUCCESS_TEXT_MSG;
@@ -42,7 +42,7 @@ namespace Agl.DevTest.PetOwner.Helpers
                         {
                             svcResponse.StatusCode = (int)response.StatusCode;
                             svcResponse.StatusMessage = response.StatusCode.ToString();
-                            //TODO: Log Exception
+                            // Log Exception
                         }
                     }
                 }
@@ -51,7 +51,7 @@ namespace Agl.DevTest.PetOwner.Helpers
             {
                 svcResponse.StatusCode = StatusCodeValues.SERVICE_CALL_ERROR;
                 svcResponse.StatusMessage = ex.Message;
-                //TODO: Log Exception
+                // Log Exception
             }
             return svcResponse;
         }

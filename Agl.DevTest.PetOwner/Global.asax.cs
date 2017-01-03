@@ -23,7 +23,7 @@ namespace Agl.DevTest.PetOwner
             Exception exception = Server.GetLastError();
             Server.ClearError();
 
-            //TODO:Log exception
+            //Log exception
 
             HttpException httpEx = exception as HttpException;
             if (httpEx != null && httpEx.GetHttpCode() == 404)

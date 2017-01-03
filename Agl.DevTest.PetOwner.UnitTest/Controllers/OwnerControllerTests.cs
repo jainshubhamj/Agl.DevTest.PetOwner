@@ -19,7 +19,7 @@ namespace Agl.DevTest.PetOwner.Controllers.UnitTest
             ViewResult result = controller.AllOwners().Result as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);            
+            Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName, string.Empty); // As View name is not mention in action            
             Assert.IsInstanceOfType(result.Model, typeof(AllOwnersViewModel));
             AllOwnersViewModel resultViewModel = result.Model as AllOwnersViewModel;

@@ -124,8 +124,8 @@
     <Compile Include="Helpers\ServiceCaller.cs" />
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Models\CommonTypes.cs" />
-    <Compile Include="Models\ICaller.cs" />
-    <Compile Include="Models\IDataProcessor.cs" />
+    <Compile Include="Interfaces\ICaller.cs" />
+    <Compile Include="Interfaces\IDataProcessor.cs" />
     <Compile Include="Models\OwnerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,7 +168,6 @@
     <Content Include="Views\Owner\_PetDetailsPartial.cshtml" />
     <Content Include="Views\Owner\SortedOwners.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
-    <Content Include="Views\Owner\_FilterByPet.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

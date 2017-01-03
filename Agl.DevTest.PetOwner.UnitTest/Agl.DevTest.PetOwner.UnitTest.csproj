@@ -86,7 +86,7 @@
     <Compile Include="Controllers\OwnerControllerTests.cs" />
     <Compile Include="Helpers\ServiceCallerTests.cs" />
     <Compile Include="Helpers\DataProcessorTests.cs" />
-    <Compile Include="Models\MockServiceCaller.cs" />
+    <Compile Include="Mock\MockServiceCaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

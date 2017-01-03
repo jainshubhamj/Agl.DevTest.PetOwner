@@ -56,7 +56,7 @@ namespace Agl.DevTest.PetOwner.Helpers
             }
             catch (Exception)
             {
-                //TODO: Log Exception
+                // Log Exception
             }
             return objOutput;
         }
